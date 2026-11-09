@@ -1,0 +1,330 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#090909">
+  <meta name="description" content="I am Sharoon Decaprio — a Creative Director, Brand Strategist and Venture Builder with 10 years of experience across creative thinking, brand development and visual storytelling.">
+  <title>Sharoon Decaprio — Creative Director & Venture Builder</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23090909'/%3E%3Cpath d='M43 18H27c-6 0-10 3-10 8 0 12 28 5 28 17 0 5-4 8-10 8H19' fill='none' stroke='%23fff' stroke-width='5' stroke-linecap='round'/%3E%3C/svg%3E">
+  <style>
+    :root{--ink:#0a0a0a;--paper:#f4f3ef;--muted:#aaa9a3;--line:rgba(255,255,255,.17);--accent:#ef3e2f;--pad:clamp(1.25rem,4vw,5rem)}
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth;background:var(--ink)}
+    body{margin:0;background:var(--ink);color:#fff;font-family:Arial,Helvetica,sans-serif;font-size:18px;line-height:1.55;overflow-x:hidden}
+    body.intro-open{overflow:hidden}
+    a{color:inherit;text-decoration:none}
+    .quote-gate{position:fixed;inset:0;z-index:100;background:#080808;display:block;overflow:hidden;isolation:isolate;animation:gate-in .8s cubic-bezier(.2,.8,.2,1) both}
+    .quote-gate[hidden]{display:none}
+    .quote-gate:before{content:"";position:absolute;inset:-18%;z-index:-2;background:radial-gradient(ellipse at 72% 48%,rgba(239,62,47,.48) 0,rgba(239,62,47,.18) 22%,transparent 48%),radial-gradient(ellipse at 18% 78%,rgba(255,255,255,.08),transparent 34%),radial-gradient(ellipse at 45% 4%,rgba(239,62,47,.15),transparent 28%),#080808;filter:blur(2px);animation:background-breathe 9s ease-in-out infinite alternate}
+    .quote-gate:after{content:"";position:absolute;inset:0;z-index:-1;background:repeating-linear-gradient(105deg,transparent 0 88px,rgba(255,255,255,.025) 89px,transparent 90px),radial-gradient(circle at center,transparent 30%,rgba(0,0,0,.72) 100%);opacity:.75;animation:field-drift 18s linear infinite}
+    .quote-gate.closing{animation:gate-out .75s cubic-bezier(.7,0,.3,1) forwards}
+    .quote-copy{position:absolute;z-index:3;inset:0;padding:clamp(2rem,5vw,5rem) var(--pad);display:grid;grid-template-rows:auto 1fr auto;min-height:100svh;pointer-events:none}
+    .quote-kicker{font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:#aaa;animation:quote-rise .9s .3s both}
+    .quote-center{align-self:center;width:min(62vw,70rem);margin-left:clamp(0rem,3vw,3rem);padding-top:3vh}
+    .quote-gate blockquote{margin:0;max-width:11ch;font-size:clamp(3.7rem,8.3vw,8.7rem);line-height:.82;letter-spacing:-.07em;font-weight:760;text-transform:uppercase;text-wrap:balance}
+    .quote-line{display:block;overflow:hidden;animation:quote-line-reveal 1.05s .48s cubic-bezier(.16,1,.3,1) both}
+    .quote-line:first-child{position:relative;z-index:2}
+    .quote-line:last-child{color:var(--accent);margin-left:clamp(2rem,7vw,8rem);animation-delay:.7s;text-shadow:0 0 42px rgba(239,62,47,.22)}
+    .quote-author{margin:clamp(1.5rem,3vh,2.5rem) 0 0 clamp(2rem,7vw,8rem);font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:#d3d3ce;animation:quote-rise .9s 1s both}
+    .quote-ghost{position:absolute;z-index:0;left:-2vw;bottom:5vh;font-size:clamp(7rem,18vw,20rem);line-height:.7;letter-spacing:-.08em;text-transform:uppercase;font-weight:800;color:transparent;-webkit-text-stroke:1px rgba(255,255,255,.075);white-space:nowrap;pointer-events:none;animation:ghost-drift 12s ease-in-out infinite alternate}
+    .quote-silhouette{position:absolute;z-index:1;right:clamp(1rem,3vw,4rem);bottom:0;width:min(43vw,42rem);height:92svh;overflow:visible;animation:silhouette-in 1.4s .15s cubic-bezier(.2,.8,.2,1) both;pointer-events:none}
+    .quote-silhouette img{width:100%;height:100%;object-fit:contain;object-position:center bottom;filter:grayscale(1) brightness(0) contrast(3) drop-shadow(-2px 0 0 rgba(239,62,47,.82)) drop-shadow(0 0 45px rgba(239,62,47,.28));opacity:.96;transform-origin:50% 100%;animation:silhouette-breathe 6s 1.5s ease-in-out infinite}
+    .quote-close{position:absolute;z-index:6;top:clamp(1.25rem,3vw,2.5rem);right:clamp(1.25rem,3vw,2.5rem);width:3.5rem;height:3.5rem;border-radius:50%;border:1px solid rgba(255,255,255,.45);background:rgba(7,7,7,.35);color:#fff;font-size:1.8rem;line-height:1;display:grid;place-items:center;cursor:pointer;backdrop-filter:blur(10px);transition:background .25s,color .25s,transform .25s}
+    .quote-close:hover,.quote-close:focus-visible{background:var(--accent);color:var(--ink);transform:rotate(90deg);outline:none}
+    .quote-enter{position:absolute;z-index:6;right:clamp(1.25rem,3vw,2.5rem);top:calc(clamp(1.25rem,3vw,2.5rem) + 4.25rem);font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:#aaa}
+    @keyframes gate-in{from{opacity:0}to{opacity:1}}
+    @keyframes gate-out{to{opacity:0;transform:scale(1.035);visibility:hidden}}
+    @keyframes background-breathe{0%{transform:scale(1) translate3d(-1%,0,0)}100%{transform:scale(1.08) translate3d(2%,-1%,0)}}
+    @keyframes field-drift{to{background-position:180px 0,0 0}}
+    @keyframes ghost-drift{0%{transform:translateX(-2%);opacity:.65}100%{transform:translateX(4%);opacity:1}}
+    @keyframes quote-rise{from{opacity:0;transform:translateY(2.5rem)}to{opacity:1;transform:none}}
+    @keyframes quote-line-reveal{from{opacity:0;clip-path:inset(0 100% 0 0);transform:translateX(-1.5rem)}to{opacity:1;clip-path:inset(0 0 0 0);transform:none}}
+    @keyframes silhouette-in{from{opacity:0;transform:translateX(8%) scale(.96)}to{opacity:1;transform:none}}
+    @keyframes silhouette-breathe{0%,100%{transform:scale(1)}50%{transform:scale(1.018)}}
+    .grain{position:fixed;inset:0;pointer-events:none;opacity:.065;z-index:20;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.8'/%3E%3C/svg%3E")}
+    .progress{position:fixed;top:0;left:0;width:0;height:3px;background:var(--accent);z-index:50}
+    .topbar{position:absolute;z-index:5;top:0;left:0;width:100%;display:flex;justify-content:space-between;align-items:center;padding:1.25rem var(--pad);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;border-bottom:1px solid var(--line)}
+    .topbar span:last-child{color:#bbb}
+    .hero{min-height:100svh;display:grid;grid-template-columns:1.08fr .92fr;position:relative;border-bottom:1px solid var(--line)}
+    .hero-copy{padding:clamp(8rem,14vh,11rem) var(--pad) 3rem;display:flex;flex-direction:column;justify-content:space-between;min-height:100svh}
+    .eyebrow{font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:#bcbcb8;display:flex;align-items:center;gap:.8rem}
+    .eyebrow:before{content:"";width:2.5rem;height:1px;background:var(--accent)}
+    h1{font-size:clamp(4.1rem,10.4vw,10.5rem);line-height:.78;letter-spacing:-.085em;margin:2rem 0 0;text-transform:uppercase;font-weight:800}
+    h1 span{display:block;color:transparent;-webkit-text-stroke:1.2px #fff;margin-left:clamp(0rem,6vw,6rem)}
+    .manifesto{display:block;margin-top:3rem}
+    .manifesto p{margin:0;font-size:clamp(1rem,1.45vw,1.35rem);max-width:31rem;color:#d0d0cd}
+    .signature{font-size:.72rem;letter-spacing:.13em;text-transform:uppercase;line-height:2;color:#f0f0ec}
+    .hero-facts{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:2rem}
+    .hero-fact{border:1px solid var(--line);padding:.7rem .9rem;font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:#c9c9c5}
+    .portrait{position:relative;min-height:100svh;overflow:hidden;background:#111}
+    .portrait img{width:100%;height:100%;position:absolute;inset:0;object-fit:contain;object-position:center bottom;filter:grayscale(100%) contrast(1.04);background:#111}
+    .portrait:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(10,10,10,.45),transparent 35%),linear-gradient(0deg,rgba(10,10,10,.65),transparent 38%)}
+    .portrait-label{position:absolute;z-index:2;right:1.5rem;bottom:1.5rem;writing-mode:vertical-rl;transform:rotate(180deg);font-size:.63rem;letter-spacing:.17em;text-transform:uppercase;color:#ccc}
+    .statement{padding:clamp(5rem,12vw,11rem) var(--pad);background:var(--paper);color:var(--ink);display:grid;grid-template-columns:minmax(9rem,.35fr) 1.65fr;gap:clamp(2rem,6vw,8rem);align-items:start}
+    .section-id{font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:#777770;padding-top:.8rem}
+    .statement blockquote{margin:0;font-size:clamp(2.6rem,6.5vw,7.2rem);line-height:.98;letter-spacing:-.055em;font-weight:700;max-width:19ch}
+    .statement blockquote em{font-style:normal;color:var(--accent)}
+    .timeline{padding:clamp(5rem,10vw,9rem) var(--pad);background:#0d0d0d}
+    .section-head{display:flex;justify-content:space-between;gap:2rem;align-items:flex-end;margin-bottom:clamp(4rem,8vw,8rem)}
+    .section-head h2{font-size:clamp(3rem,8vw,8rem);letter-spacing:-.065em;line-height:.86;text-transform:uppercase;margin:0}
+    .section-head p{max-width:23rem;color:#aaa;margin:0}
+    .chapter{display:grid;grid-template-columns:minmax(12rem,.75fr) 2fr;gap:clamp(1.5rem,5vw,6rem);padding:clamp(2rem,4vw,3rem) 0;border-top:1px solid var(--line);position:relative}
+    .chapter .era{text-transform:uppercase;font-size:.78rem;letter-spacing:.13em;color:#bbb}
+    .chapter h3{margin:0 0 1rem;font-size:clamp(1.8rem,3.3vw,3.8rem);line-height:1;letter-spacing:-.04em}
+    .chapter p{margin:0;max-width:49rem;color:#b8b8b5}
+    .experience{padding:clamp(5rem,10vw,9rem) var(--pad);background:#121212;border-top:1px solid var(--line)}
+    .experience-grid{display:grid;grid-template-columns:repeat(2,1fr);border-top:1px solid var(--line);border-left:1px solid var(--line)}
+    .experience-card{padding:clamp(1.5rem,3vw,3rem);min-height:18rem;border-right:1px solid var(--line);border-bottom:1px solid var(--line);display:flex;flex-direction:column;justify-content:space-between}
+    .experience-card small{font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:var(--accent)}
+    .experience-card h3{font-size:clamp(1.8rem,3.5vw,3.8rem);line-height:.95;letter-spacing:-.045em;margin:1rem 0;text-transform:uppercase}
+    .experience-card p{margin:0;color:#aaa9a5;max-width:32rem}
+    .capabilities{padding:clamp(5rem,10vw,9rem) var(--pad);background:var(--paper);color:var(--ink)}
+    .capabilities .section-head p{color:#6d6d67}
+    .capability-grid{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid #bdbdb6;border-left:1px solid #bdbdb6}
+    .capability{min-height:10rem;padding:clamp(1.2rem,2vw,2rem);border-right:1px solid #bdbdb6;border-bottom:1px solid #bdbdb6;display:flex;flex-direction:column;justify-content:space-between;gap:2rem;transition:background .3s,color .3s}
+    .capability:hover{background:var(--ink);color:#fff}
+    .capability span{font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;color:#777}
+    .capability strong{font-size:clamp(1.1rem,1.7vw,1.55rem);line-height:1.1;text-transform:uppercase}
+    .ventures{background:var(--paper);color:var(--ink);padding:clamp(5rem,10vw,9rem) var(--pad)}
+    .ventures .section-head p{color:#6d6d67}
+    .venture-grid{display:grid;grid-template-columns:repeat(2,1fr);border-top:1px solid #bdbdb6;border-left:1px solid #bdbdb6}
+    .venture{padding:clamp(1.5rem,3vw,3rem);min-height:18rem;border-right:1px solid #bdbdb6;border-bottom:1px solid #bdbdb6;display:flex;flex-direction:column;justify-content:space-between;transition:background .35s,color .35s}
+    .venture:hover{background:var(--ink);color:#fff}
+    .venture small{letter-spacing:.14em;text-transform:uppercase;color:#777}
+    .venture h3{font-size:clamp(2rem,4vw,4.5rem);margin:0;letter-spacing:-.055em;text-transform:uppercase}
+    .venture p{max-width:26rem;margin:1rem 0 0;color:#666}
+    .venture:hover p{color:#bbb}
+    .method{padding:clamp(6rem,12vw,12rem) var(--pad);position:relative;overflow:hidden}
+    .method-word{font-size:clamp(4.4rem,15vw,15rem);line-height:.75;letter-spacing:-.09em;text-transform:uppercase;font-weight:800;white-space:nowrap}
+    .method-word.outline{color:transparent;-webkit-text-stroke:1px #666;margin-left:9vw}
+    .philosophy-full{margin-top:clamp(4rem,8vw,8rem);padding:clamp(2rem,5vw,5rem) 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);font-size:clamp(2.3rem,6vw,6.8rem);font-weight:700;letter-spacing:-.055em;line-height:.98}
+    .philosophy-full span{display:block}
+    .philosophy-full span:nth-child(2){color:var(--accent);margin-left:8vw}
+    .philosophy-full span:nth-child(3){margin-left:16vw}
+    .philosophy-intro{display:grid;grid-template-columns:.35fr 1.65fr;gap:clamp(2rem,6vw,8rem);margin-top:clamp(4rem,8vw,8rem);align-items:start}
+    .philosophy-intro p{margin:0;max-width:44rem;color:#b6b6b2;font-size:clamp(1.05rem,1.6vw,1.4rem)}
+    .philosophy-marquee{width:calc(100% + (var(--pad) * 2));margin-left:calc(var(--pad) * -1);overflow:hidden;margin-top:clamp(3rem,6vw,6rem);padding:1px 0;mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent)}
+    .philosophy-track{display:flex;width:max-content;animation:flow-left 38s linear infinite;will-change:transform}
+    .philosophy-marquee:hover .philosophy-track{animation-play-state:paused}
+    .philosophy-set{display:flex;gap:1rem;padding-right:1rem}
+    .principle{width:clamp(18rem,28vw,28rem);min-height:18rem;border:1px solid #343434;padding:clamp(1.5rem,2.6vw,2.6rem);display:flex;flex-direction:column;justify-content:space-between;background:#111;transition:background .3s,border-color .3s}
+    .principle:hover{background:#171717;border-color:var(--accent)}
+    .principle small{color:var(--accent);letter-spacing:.16em;text-transform:uppercase;font-size:.7rem}
+    .principle h3{font-size:clamp(2.4rem,4.5vw,4.8rem);line-height:.9;letter-spacing:-.06em;margin:.8rem 0 1.5rem;text-transform:uppercase}
+    .principle p{font-size:1rem;line-height:1.5;color:#aeadA8;margin:0;max-width:24rem}
+    @keyframes flow-left{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+    .method-copy{display:grid;grid-template-columns:1fr 1fr;gap:4rem;margin:clamp(5rem,8vw,8rem) 0 0 auto;max-width:68rem}
+    .method-copy p{margin:0;color:#b6b6b2}
+    .method-copy strong{color:#fff}
+    .showcase{min-height:70svh;padding:clamp(5rem,10vw,9rem) var(--pad);background:#0d0d0d;display:flex;flex-direction:column;justify-content:space-between;border-top:1px solid var(--line);overflow:hidden}
+    .showcase-meta{display:flex;justify-content:space-between;gap:2rem;font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:#aaa}
+    .showcase h2{font-size:clamp(4rem,14vw,14rem);line-height:.74;letter-spacing:-.09em;text-transform:uppercase;margin:5rem 0 2rem}
+    .showcase h2 span{display:block;color:transparent;-webkit-text-stroke:1px #666;margin-left:8vw}
+    .showcase p{max-width:42rem;color:#b6b6b2;font-size:clamp(1rem,1.5vw,1.35rem);margin:0}
+    .contact{padding:clamp(5rem,10vw,9rem) var(--pad);background:var(--paper);color:var(--ink)}
+    .contact h2{font-size:clamp(3.5rem,10vw,10rem);line-height:.8;letter-spacing:-.075em;text-transform:uppercase;margin:0 0 clamp(3rem,6vw,6rem)}
+    .contact-grid{display:grid;grid-template-columns:repeat(2,1fr);border-top:1px solid #aaa;border-left:1px solid #aaa}
+    .contact-link{min-height:9rem;padding:1.5rem;border-right:1px solid #aaa;border-bottom:1px solid #aaa;display:flex;align-items:flex-end;justify-content:space-between;gap:1rem;transition:background .3s,color .3s}
+    .contact-link:hover,.contact-link:focus-visible{background:var(--accent);color:var(--ink);outline:none}
+    .contact-link small{display:block;font-size:.68rem;letter-spacing:.15em;text-transform:uppercase;color:#777;margin-bottom:.6rem}
+    .contact-link strong{font-size:clamp(1rem,2vw,1.6rem);word-break:break-word}
+    .contact-link .arrow{font-size:2rem;line-height:1}
+    .closing{min-height:92svh;background:var(--accent);color:var(--ink);padding:var(--pad);display:flex;flex-direction:column;justify-content:space-between}
+    .closing-top{display:flex;justify-content:space-between;text-transform:uppercase;letter-spacing:.15em;font-size:.68rem}
+    .closing h2{font-size:clamp(4.2rem,13vw,13rem);line-height:.77;letter-spacing:-.09em;text-transform:uppercase;margin:3rem 0;max-width:9ch}
+    .closing-bottom{display:grid;grid-template-columns:1fr 1fr;gap:2rem;border-top:1px solid rgba(0,0,0,.35);padding-top:1.5rem}
+    .closing-bottom p{margin:0;max-width:35rem}
+    .roles{text-transform:uppercase;letter-spacing:.1em;font-size:.75rem;line-height:2}
+    .reveal{opacity:0;transform:translateY(28px);transition:opacity .85s ease,transform .85s cubic-bezier(.2,.8,.2,1)}
+    .reveal.on{opacity:1;transform:none}
+    @media(max-width:1100px){
+      .hero{grid-template-columns:1.15fr .85fr}.hero-copy{padding-top:8rem}.manifesto p{max-width:38rem}.portrait img{object-position:52% bottom}.experience-card,.venture{min-height:16rem}.principle{width:clamp(19rem,38vw,25rem)}
+    }
+    @media(max-width:850px){
+      :root{--pad:clamp(1.25rem,5vw,2.5rem)}
+      body{font-size:17px}
+      .quote-copy{padding-top:2rem;padding-bottom:2rem}.quote-center{width:100%;margin:0;align-self:center;padding-top:0}.quote-gate blockquote{font-size:clamp(3.1rem,14vw,6.2rem);max-width:10ch}.quote-line:last-child,.quote-author{margin-left:0}.quote-author{margin-top:1.4rem}.quote-silhouette{right:-2%;width:76vw;height:72svh;opacity:.58}.quote-ghost{left:-12vw;bottom:18vh;font-size:32vw}.quote-gate:after{opacity:.55}.quote-copy>*{position:relative;z-index:2}
+      .hero{grid-template-columns:1fr}.hero-copy{min-height:auto;padding-top:7.5rem;padding-bottom:4rem}.portrait{min-height:78svh}.portrait img{object-position:center bottom}
+      h1{font-size:clamp(4rem,15vw,7.4rem)}
+      .method-copy,.closing-bottom,.philosophy-intro{grid-template-columns:1fr}
+      .statement{grid-template-columns:1fr;gap:1.25rem}.section-id{padding-top:0}
+      .chapter{grid-template-columns:1fr;gap:.8rem}.chapter>div:last-child{grid-column:auto}.chapter .era{color:var(--accent)}
+      .experience-grid,.venture-grid,.contact-grid{grid-template-columns:1fr}.capability-grid{grid-template-columns:repeat(2,1fr)}.experience-card,.venture{grid-column:auto;min-height:15rem}
+      .philosophy-full span:nth-child(n),.showcase h2 span{margin-left:0}.section-head{display:block}.section-head p{margin-top:2rem;max-width:38rem}.showcase-meta{display:block}.showcase-meta span{display:block;margin-bottom:.5rem}.topbar span:last-child{display:none}
+      .closing{min-height:80svh}.closing-bottom{gap:2rem}
+    }
+    @media(max-width:560px){
+      body{font-size:16px}
+      .topbar{padding-top:1rem;padding-bottom:1rem;font-size:.62rem}
+      .hero-copy{padding-top:6.5rem}.eyebrow{font-size:.62rem;line-height:1.5}.eyebrow:before{width:1.5rem;flex:0 0 auto}
+      h1{font-size:clamp(3.8rem,18vw,6rem);margin-top:1.5rem}h1 span{margin-left:0}
+      .manifesto{margin-top:3.5rem}.manifesto p{font-size:1rem}.portrait{min-height:68svh}
+      .statement blockquote{font-size:clamp(2.35rem,11vw,4rem)}.section-head h2{font-size:clamp(2.8rem,15vw,5.5rem)}
+      .capability-grid{grid-template-columns:1fr}.capability{min-height:8rem}
+      .contact-link{min-height:8rem;padding:1.25rem}.contact-link strong{font-size:.96rem}
+      .hero-facts{display:grid;grid-template-columns:1fr}.hero-fact{line-height:1.45}
+      .method-word{font-size:clamp(3.3rem,18vw,5.5rem);white-space:normal;line-height:.85}.method-word.outline{margin:1rem 0 0}
+      .philosophy-full{font-size:clamp(2rem,10vw,3.5rem)}.principle{width:82vw;min-height:17rem}
+      .showcase{min-height:62svh}.showcase h2{font-size:clamp(3.5rem,18vw,6.5rem)}
+      .contact h2{font-size:clamp(3rem,15vw,5.5rem)}.closing h2{font-size:clamp(3.7rem,18vw,6.8rem)}
+      .closing-top{gap:1rem}.closing-top span:last-child{text-align:right}
+      .quote-enter{display:none}.quote-close{width:3.1rem;height:3.1rem}.quote-silhouette{right:-4%;width:96vw;height:64svh;opacity:.42}.quote-gate blockquote{font-size:clamp(2.9rem,15vw,4.8rem)}
+    }
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.quote-gate,.quote-gate:before,.quote-gate:after,.quote-kicker,.quote-line,.quote-author,.quote-ghost,.quote-silhouette,.quote-silhouette img{animation:none}.quote-gate.closing{animation:none;opacity:0}.reveal{opacity:1;transform:none;transition:none}.philosophy-track{animation:none}.philosophy-marquee{overflow-x:auto;mask-image:none}}
+  </style>
+</head>
+<body class="intro-open">
+  <div class="quote-gate" id="quoteGate" role="dialog" aria-modal="true" aria-labelledby="quoteTitle">
+    <button class="quote-close" id="quoteClose" type="button" aria-label="Close quote and enter website">×</button>
+    <span class="quote-enter" aria-hidden="true">Close to enter</span>
+    <div class="quote-ghost" aria-hidden="true">Undefined</div>
+    <div class="quote-copy">
+      <div class="quote-kicker">A thought by Sharoon Decaprio</div>
+      <div class="quote-center">
+        <blockquote id="quoteTitle"><span class="quote-line">So Much of Me,</span><span class="quote-line">Undefined.</span></blockquote>
+        <div class="quote-author">— Sharoon Decaprio</div>
+      </div>
+      <div class="signature">Craft × System. Creativity × Purpose. Emotion × Discipline.</div>
+    </div>
+    <div class="quote-silhouette" aria-hidden="true"><img src="assets/sharoon-silhouette-cutout.png" alt=""></div>
+  </div>
+  <div class="grain" aria-hidden="true"></div><div class="progress" aria-hidden="true"></div>
+  <header class="topbar"><span>Sharoon Decaprio / Creative Profile</span><span>Kochi &amp; Bangalore, India — 2026</span></header>
+  <main>
+    <section class="hero">
+      <div class="hero-copy">
+        <div><div class="eyebrow">Creative Director / Brand Strategist / Venture Builder</div><h1>Sharoon <span>Decaprio</span></h1></div>
+        <div>
+          <div class="manifesto"><p>I am not a creative mind contained by one discipline. I build identities, experiences, ventures and systems that make ideas feel inevitable.</p></div>
+          <div class="hero-facts"><span class="hero-fact">Based in Kochi &amp; Bangalore, India</span><span class="hero-fact">10 Years of Creative Experience</span></div>
+        </div>
+      </div>
+      <figure class="portrait"><img src="assets/sharoon-decaprio.png" alt="Portrait of Sharoon Decaprio"><figcaption class="portrait-label">Creative identity / Sharoon Decaprio</figcaption></figure>
+    </section>
+
+    <section class="statement reveal"><div class="section-id">My Premise</div><blockquote>I did not enter creativity to decorate the world. I entered it to <em>reframe</em> what the world could become.</blockquote></section>
+
+    <section class="timeline">
+      <div class="section-head reveal"><h2>My<br>Journey.</h2><p>Ten years of moving through administration, marketing, business development and creative direction taught me to see the complete system behind every idea—not only how it looks, but how it communicates, operates and grows.</p></div>
+      <article class="chapter reveal"><div class="era">Thought Blurb</div><div><h3>Administrator.</h3><p>I began by learning how work is organised, coordinated and carried forward. Administration gave me an early understanding of people, responsibility, process and the discipline behind execution.</p></div></article>
+      <article class="chapter reveal"><div class="era">Vingro Natures Pvt. Ltd.</div><div><h3>Junior Marketing Executive.</h3><p>I moved closer to audiences, communication and market behaviour. This role taught me how positioning, messaging and human attention shape the way a business is understood.</p></div></article>
+      <article class="chapter reveal"><div class="era">Arbis International / Bangalore</div><div><h3>Business Development Manager.</h3><p>I learned to connect opportunity with action—building relationships, developing markets and understanding how creative thinking must support real business movement.</p></div></article>
+      <article class="chapter reveal"><div class="era">FlyWellness / Bangalore</div><div><h3>Creative Director.</h3><p>I directed identity, product storytelling, campaigns, events, films, packaging and digital communication. This previous professional experience expanded my role from producing creative outputs to protecting and directing an entire brand world.</p></div></article>
+      <article class="chapter reveal"><div class="era">Now / Independent Evolution</div><div><h3>I design what operates.</h3><p>Today I unite visual craft with structured intelligence. I ask what an idea should express, how it should make decisions, how it can scale and how its meaning can remain coherent over time. For me, identity is a system of decisions.</p></div></article>
+    </section>
+
+    <section class="experience">
+      <div class="section-head reveal"><h2>Beyond<br>The Title.</h2><p>My experience extends across brand creation, screen production and AI-powered creative workflows. I combine human instinct with technology to move faster without losing intention.</p></div>
+      <div class="experience-grid">
+        <article class="experience-card reveal"><small>Brands &amp; Strategy</small><div><h3>Built from the idea outward.</h3><p>I have developed multiple brands and their strategies—connecting naming, identity, positioning, communication and growth into one coherent direction.</p></div></article>
+        <article class="experience-card reveal"><small>VFX Production</small><div><h3>Behind complex screens.</h3><p>I have worked as a VFX Coordinator for a Netflix web series, gaining first-hand experience in detailed visual production and demanding delivery environments.</p></div></article>
+        <article class="experience-card reveal"><small>Creative Collaboration</small><div><h3>Learning beside specialists.</h3><p>I have worked with VFX Supervisor Stalin Saravanan, strengthening my understanding of visual effects pipelines, coordination and cinematic problem-solving.</p></div></article>
+        <article class="experience-card reveal"><small>AI-Native Practice</small><div><h3>Human intention. Accelerated.</h3><p>I work fluently across the world of AI, using intelligent tools to accelerate ideation, design, film, sound and production while keeping human judgment at the centre.</p></div></article>
+      </div>
+    </section>
+
+    <section class="capabilities">
+      <div class="section-head reveal"><h2>What I<br>Can Become.</h2><p>I do not separate creative disciplines too quickly. I move across them, connect them and use the right combination to serve the idea.</p></div>
+      <div class="capability-grid">
+        <div class="capability reveal"><span>Music</span><strong>Songwriting &amp; Singing</strong></div>
+        <div class="capability reveal"><span>Story</span><strong>Film &amp; Short-Film Scripts</strong></div>
+        <div class="capability reveal"><span>Brand Film</span><strong>Under-One-Minute Films</strong></div>
+        <div class="capability reveal"><span>Performance</span><strong>Direction &amp; Acting</strong></div>
+        <div class="capability reveal"><span>Post-Production</span><strong>Cinematic Video Editing</strong></div>
+        <div class="capability reveal"><span>Production</span><strong>Camera &amp; Visual Shooting</strong></div>
+        <div class="capability reveal"><span>Experience</span><strong>Event Direction</strong></div>
+        <div class="capability reveal"><span>Weddings</span><strong>Cinematic Wedding Creatives</strong></div>
+        <div class="capability reveal"><span>Design</span><strong>Campaign &amp; Social Creatives</strong></div>
+        <div class="capability reveal"><span>Product</span><strong>Brand Product Design</strong></div>
+        <div class="capability reveal"><span>Space</span><strong>Creative Interior Direction</strong></div>
+        <div class="capability reveal"><span>Thinking</span><strong>Strategy &amp; Critical Thinking</strong></div>
+        <div class="capability reveal"><span>Leadership</span><strong>Creative Leadership</strong></div>
+        <div class="capability reveal"><span>Technology</span><strong>AI-Supported Workflows</strong></div>
+        <div class="capability reveal"><span>Endurance</span><strong>Relentless Working Energy</strong></div>
+      </div>
+    </section>
+
+    <section class="ventures">
+      <div class="section-head reveal"><h2>One mind.<br>Six forms.</h2><p>I express one evolving creative mind through six distinct territories. Every form begins with the same conviction: creativity becomes powerful when it carries purpose and can survive at scale.</p></div>
+      <div class="venture-grid">
+        <article class="venture reveal"><small>Previous Professional Experience / Wellness Brand</small><div><h3>FlyWellness</h3><p>I previously led creative direction across identity, product storytelling, campaigns, events and digital positioning.</p></div></article>
+        <article class="venture reveal"><small>Culture / Fashion / Opposition</small><div><h3>ZEROBRAIN</h3><p>I turn uncomfortable questions into wearable thoughts—challenging labels, conformity and inherited certainty.</p></div></article>
+        <article class="venture reveal"><small>AI / Learning / Leadership Systems</small><div><h3>AlphaCode</h3><p>I am shaping a structured ecosystem where artificial intelligence, learning, leadership and disciplined growth operate as one system.</p></div></article>
+        <article class="venture reveal"><small>Creative Production / Collaboration</small><div><h3>BetaCrew</h3><p>I bring unmixable talent, technology and perspectives together to create beyond conventional limits.</p></div></article>
+        <article class="venture reveal"><small>Venture / Technology / Property</small><div><h3>SpiceBay</h3><p>I approach PropTech entrepreneurship through brand thinking, intelligent systems and future-facing business design.</p></div></article>
+        <article class="venture reveal"><small>Music / Artists / Creative Expression</small><div><h3>AESTHETIC RAVAN</h3><p>I am building a music-driven creative platform to discover hidden musicians, amplify unheard voices and bring original artistic expression to life.</p><p><strong>For Hidden Musicians.</strong></p></div></article>
+      </div>
+    </section>
+
+    <section class="method">
+      <div class="method-word reveal">Craft × System.</div><div class="method-word outline reveal">Emotion × Discipline.</div>
+      <div class="philosophy-full reveal" aria-label="Craft by System. Creativity by Purpose. Emotion by Discipline."><span>Craft × System.</span><span>Creativity × Purpose.</span><span>Emotion × Discipline.</span></div>
+      <div class="philosophy-intro reveal"><div class="section-id">My six forces</div><p>Six words define how I think, create and evolve. They are not separate values. Each one strengthens the next—turning instinct into identity, ideas into impact and ambition into work that can endure.</p></div>
+      <div class="philosophy-marquee reveal" aria-label="Six principles that define my creative practice">
+        <div class="philosophy-track">
+          <div class="philosophy-set">
+            <article class="principle"><small>Precision</small><div><h3>Craft</h3><p>I refine every visible and invisible detail until the execution carries clarity, character and an international finish.</p></div></article>
+            <article class="principle"><small>Intelligence</small><div><h3>System</h3><p>I convert creative instinct into structures, standards and workflows that protect quality and allow an idea to scale.</p></div></article>
+            <article class="principle"><small>Possibility</small><div><h3>Creativity</h3><p>I connect disciplines, cultures, technologies and perspectives that others rarely imagine belonging together.</p></div></article>
+            <article class="principle"><small>Direction</small><div><h3>Purpose</h3><p>I make every choice carry meaning. My work must solve, influence or move something forward—not merely attract attention.</p></div></article>
+            <article class="principle"><small>Connection</small><div><h3>Emotion</h3><p>I create work people feel before they explain it—using story, atmosphere and human truth to make ideas memorable.</p></div></article>
+            <article class="principle"><small>Standard</small><div><h3>Discipline</h3><p>I protect the idea through consistency, patience and the courage to refine repeatedly until the work becomes undeniable.</p></div></article>
+          </div>
+          <div class="philosophy-set" aria-hidden="true">
+            <article class="principle"><small>Precision</small><div><h3>Craft</h3><p>I refine every visible and invisible detail until the execution carries clarity, character and an international finish.</p></div></article>
+            <article class="principle"><small>Intelligence</small><div><h3>System</h3><p>I convert creative instinct into structures, standards and workflows that protect quality and allow an idea to scale.</p></div></article>
+            <article class="principle"><small>Possibility</small><div><h3>Creativity</h3><p>I connect disciplines, cultures, technologies and perspectives that others rarely imagine belonging together.</p></div></article>
+            <article class="principle"><small>Direction</small><div><h3>Purpose</h3><p>I make every choice carry meaning. My work must solve, influence or move something forward—not merely attract attention.</p></div></article>
+            <article class="principle"><small>Connection</small><div><h3>Emotion</h3><p>I create work people feel before they explain it—using story, atmosphere and human truth to make ideas memorable.</p></div></article>
+            <article class="principle"><small>Standard</small><div><h3>Discipline</h3><p>I protect the idea through consistency, patience and the courage to refine repeatedly until the work becomes undeniable.</p></div></article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="showcase">
+      <div class="showcase-meta"><span>Portfolio / Selected Work</span><span>Next chapter loading</span></div>
+      <div><h2 class="reveal">Creative <span>Showcase.</span></h2><p class="reveal">My dedicated portfolio experience will be live soon—a curated view of the brands, films, campaigns, designs, music and creative systems I have brought to life.</p></div>
+    </section>
+
+    <section class="contact">
+      <h2 class="reveal">Let’s make<br>something move.</h2>
+      <div class="contact-grid reveal">
+        <a class="contact-link" href="https://wa.me/919037474217?text=Hi%20Sharoon%2C%20I%20would%20like%20to%20connect%20with%20you." target="_blank" rel="noopener"><div><small>WhatsApp</small><strong>+91 90374 74217</strong></div><span class="arrow">↗</span></a>
+        <a class="contact-link" href="https://www.instagram.com/sharoon.decaprio/" target="_blank" rel="noopener"><div><small>Instagram</small><strong>@sharoon.decaprio</strong></div><span class="arrow">↗</span></a>
+        <a class="contact-link" href="mailto:decapriosharoon@gmail.com"><div><small>Email me</small><strong>decapriosharoon@gmail.com</strong></div><span class="arrow">↗</span></a>
+        <a class="contact-link" href="mailto:hello@sharoondecaprio.com"><div><small>Connect</small><strong>hello@sharoondecaprio.com</strong></div><span class="arrow">↗</span></a>
+      </div>
+    </section>
+
+    <section class="closing">
+      <div class="closing-top"><span>Sharoon Decaprio</span><span>Continuous becoming</span></div>
+      <h2 class="reveal">I am not a finished identity.</h2>
+      <div class="closing-bottom"><p>My ambition is not simply to produce successful work. I am building a creative language recognisable before my name appears—and a body of ideas, ventures and systems capable of moving culture forward.</p><div class="roles">Creative Director<br>Brand Strategist<br>Visual Storyteller<br>Venture Builder<br>Founder</div></div>
+    </section>
+  </main>
+  <script>
+    const gate=document.querySelector('#quoteGate');
+    const gateClose=document.querySelector('#quoteClose');
+    const siteMain=document.querySelector('main');
+    siteMain?.setAttribute('inert','');
+    const closeGate=()=>{
+      if(!gate||gate.classList.contains('closing'))return;
+      gate.classList.add('closing');
+      document.body.classList.remove('intro-open');
+      siteMain?.removeAttribute('inert');
+      const delay=matchMedia('(prefers-reduced-motion: reduce)').matches?0:760;
+      setTimeout(()=>{gate.hidden=true},delay);
+    };
+    gateClose?.addEventListener('click',closeGate);
+    addEventListener('keydown',e=>{if(e.key==='Escape'&&!gate?.hidden)closeGate()});
+    gateClose?.focus();
+    const bar=document.querySelector('.progress');
+    addEventListener('scroll',()=>{const d=document.documentElement;bar.style.width=((d.scrollTop/(d.scrollHeight-d.clientHeight))*100)+'%'},{passive:true});
+    const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('on')}),{threshold:.12});
+    document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+  </script>
+</body>
+</html>
+
